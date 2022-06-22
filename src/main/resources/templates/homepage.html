@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>My Coronavirus Tracking App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+
+<body>
+<div class="container">
+
+<h1>My Coronavirus Tracking App</h1>
+<p>This is a study application that lists current numbers of COVID-19 reported cases</p>
+
+<div class="jumbotron">
+    <h1 class="display-4" th:text="${totalReportedCases}">Total cases</h1>
+    <p class="lead">Total cases reported as of today</p>
+    <hr class="my-4">
+    <p>
+        <span>Global tendency:</span>
+        <span th:text="${totalTendency}"></span>
+    </p>
+</div>
+    <table class="table">
+        <tr>
+            <th>Province</th>
+            <th>Country</th>
+            <th>Total cases reported</th>
+            <th>Tendency</th>
+        </tr>
+        <tr th:each="stat : ${statsList}">
+            <td th:text="${stat.province}"></td>
+            <td th:text="${stat.country}"></td>
+            <td th:text="${stat.latestTotalCases}">0</td>
+            <td th:text="${stat.tendency}">0</td>
+        </tr>
+    </table>
+</div>
+</body>
+
+</html>
